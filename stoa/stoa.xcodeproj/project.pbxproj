@@ -10,9 +10,22 @@
 		FAF93F5C2E25EC5900FA77A4 /* stoa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = stoa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		53D9D47E2E26146C00C94BEF /* Exceptions for "stoa" folder in "stoa" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = FAF93F5B2E25EC5900FA77A4 /* stoa */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		FAF93F5E2E25EC5900FA77A4 /* stoa */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				53D9D47E2E26146C00C94BEF /* Exceptions for "stoa" folder in "stoa" target */,
+			);
 			path = stoa;
 			sourceTree = "<group>";
 		};
@@ -252,9 +265,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"stoa/Preview Content\"";
-				DEVELOPMENT_TEAM = 9ASBJ87RVR;
+				DEVELOPMENT_TEAM = DSX6SF3U3F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = stoa/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -281,9 +295,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"stoa/Preview Content\"";
-				DEVELOPMENT_TEAM = 9ASBJ87RVR;
+				DEVELOPMENT_TEAM = DSX6SF3U3F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = stoa/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
