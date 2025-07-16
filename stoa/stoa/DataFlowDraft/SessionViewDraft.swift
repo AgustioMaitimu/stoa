@@ -1,14 +1,30 @@
 //
-//  SessionView.swift
+//  SessionView2.swift
 //  stoa
 //
-//  Created by Agustio Maitimu on 15/07/25.
+//  Created by Agustio Maitimu on 16/07/25.
 //
 
 import SwiftUI
 
-struct SessionView: View {
-	static var breathingTrack = AudioTrack( //this shit will be inside CurrentSession later
+struct SessionViewDraft: View {
+	var currentSession: CurrentSession
+	
+    var body: some View {
+		VStack {
+			if (currentSession.breathingTrack != nil) {
+				Text("Breathing ID : \(currentSession.breathingTrack!.trackID)")
+			}
+			
+			if (currentSession.mindfulnessTrack != nil) {
+				Text("Mindfulness ID : \(currentSession.mindfulnessTrack!.trackID)")
+			}
+		}
+    }
+}
+
+#Preview {
+	var breathingTrack = AudioTrack( //this shit will be inside CurrentSession later
 		trackID: 1001,
 		trackType: "Breathing",
 		trackLength: "Normal",
@@ -25,7 +41,7 @@ struct SessionView: View {
 		]
 	)
 	
-	static var mindfulnessTrack = AudioTrack( //this shit will be inside CurrentSession later
+	var mindfulnessTrack = AudioTrack( //this shit will be inside CurrentSession later
 		trackID: 2001,
 		trackType: "Mindfulness",
 		trackLength: "Normal",
@@ -59,19 +75,7 @@ struct SessionView: View {
 		]
 	)
 	
-	//this shit will be received from ContentView later, right now just expect it to be like this
-	//var currentSession: CurrentSession? <-- like this right
 	var currentSession = CurrentSession(breathingTrack: breathingTrack, mindfulnessTrack: mindfulnessTrack)
 	
-	//when you code the things expect one or two tracks and adjust pls ziqa <3
-	//for 2 audio at the same time gemini say AVQueuePlayer instead of AVPlayer
-		
-	
-	var body: some View {
-		Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-	}
-}
-
-#Preview {
-	SessionView()
+	SessionViewDraft(currentSession: currentSession)
 }
