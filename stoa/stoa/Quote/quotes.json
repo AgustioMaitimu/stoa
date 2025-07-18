@@ -1,103 +1,116 @@
 [
   {
-    "id": "quote1",
-    "text": "People try to get away from it all—to the country, to the beach, to the mountains. You always wish that you could too. Which is idiotic: you can get away from it anytime you like. By going within. Nowhere you can go is more peaceful—more free of interruptions—than your own soul.",
-    "author": "Marcus Aurelius"
+    "id": 1,
+    "name": "Marcus Aurelius",
+    "imageName": "marcusAurelius",
+    "quotes": [
+      {
+        "id": "101",
+        "text": "Which is idiotic: you can get away from it anytime you like. By going within. Nowhere you can go is more peaceful—more free of interruptions—than your own soul.",
+        "meaning": "True peace comes from within; you don’t need to escape external life to find quiet—it’s accessible by turning inward."
+      },
+      {
+        "id": "102",
+        "text": "Today I escaped from anxiety. Or no, I discarded it, because it was within me, in my own perceptions—not outside.",
+        "meaning": "Anxiety is created by our own thoughts and perceptions, so by adjusting how we view them, we can let it go."
+      },
+      {
+        "id": "103",
+        "text": "If you seek tranquillity, do less. Or (more accurately) do what’s essential—what the logos of a social being requires, and in the requisite way. Which brings a double satisfaction: to do less, better...",
+        "meaning": "Real tranquility arises when we focus only on what truly matters and fulfill our social duties, doing fewer things but doing them well."
+      },
+      {
+        "id": "104",
+        "text": "The happiness of your life depends upon the quality of your thoughts.",
+        "meaning": "Your overall happiness is shaped by your mindset; cultivating positive, virtuous thoughts leads to a better life."
+      },
+      {
+        "id": "105",
+        "text": "Are you distracted by outward cares? Then allow yourself a space of quiet wherein you can add to your knowledge of the Good and learn to curb your restlessness.",
+        "meaning": "When distractions start pulling you outward, carve out a quiet space to deepen your understanding of what’s good and calm your restless mind."
+      },
+      {
+        "id": "106",
+        "text": "Nowhere can man find a quieter or more untroubled retreat than in his own soul.",
+        "meaning": "The most serene refuge isn’t in remote places—it’s found in the stillness of your own soul."
+      },
+      {
+        "id": "107",
+        "text": "When you arise in the morning, think of what a precious privilege it is to be alive—to breathe, to think, to enjoy, to love.",
+        "meaning": "Waking up is a gift; appreciate the fundamental privileges of life—breathing, thinking, experiencing joy and love."
+      },
+      {
+        "id": "108",
+        "text": "Your mind will be like its habitual thoughts; for the soul becomes dyed with the colour of its thoughts.",
+        "meaning": "Over time, your mind becomes colored by whatever you habitually think about—so choose thoughts that serve your well‑being."
+      },
+      {
+        "id": "109",
+        "text": "Men seek retreats for themselves, houses in the country, sea‑shores, and mountains; and thou too art wont to desire such things very much.",
+        "meaning": "Desiring external retreats is common, but you have the power at any moment to withdraw into the peace of your own mind."
+      },
+      {
+        "id": "110",
+        "text": "Man following reason in all things combines relaxation with initiative, spark with composure.",
+        "meaning": "Living according to reason unites active purpose with inner calm, blending energy and composure."
+      }
+    ]
   },
   {
-    "id": "quote2",
-    "text": "Today I escaped from anxiety. Or no, I discarded it, because it was within me, in my own perceptions—not outside.",
-    "author": "Marcus Aurelius"
-  },
-  {
-    "id": "quote3",
-    "text": "If you seek tranquillity, do less. Or (more accurately) do what’s essential—what the logos of a social being requires, and in the requisite way. Which brings a double satisfaction: to do less, better...",
-    "author": "Marcus Aurelius"
-  },
-  {
-    "id": "quote4",
-    "text": "The happiness of your life depends upon the quality of your thoughts.",
-    "author": "Marcus Aurelius"
-  },
-  {
-    "id": "quote5",
-    "text": "Are you distracted by outward cares? Then allow yourself a space of quiet wherein you can add to your knowledge of the Good and learn to curb your restlessness.",
-    "author": "Seneca"
-  },
-  {
-    "id": "quote6",
-    "text": "Nowhere can man find a quieter or more untroubled retreat than in his own soul.",
-    "author": "Marcus Aurelius"
-  },
-  {
-    "id": "quote7",
-    "text": "When you arise in the morning, think of what a precious privilege it is to be alive—to breathe, to think, to enjoy, to love.",
-    "author": "Marcus Aurelius"
-  },
-  {
-    "id": "quote8",
-    "text": "Your mind will be like its habitual thoughts; for the soul becomes dyed with the colour of its thoughts.",
-    "author": "Marcus Aurelius"
-  },
-  {
-    "id": "quote9",
-    "text": "Men seek retreats for themselves, houses in the country, sea‑shores, and mountains; and thou too art wont to desire such things very much. But this is altogether a mark of the most common sort of men, for it is in thy power whenever thou shalt choose to retire into thyself.",
-    "author": "Marcus Aurelius"
-  },
-  {
-    "id": "quote10",
-    "text": "Man following reason in all things combines relaxation with initiative, spark with composure.",
-    "author": "Marcus Aurelius"
-  },
-  {
-    "id": "quote11",
-    "text": "There is only one way to happiness and that is to cease worrying about things which are beyond the power of our will.",
-    "author": "Epictetus"
-  },
-  {
-    "id": "quote12",
-    "text": "Caretake this moment. Immerse yourself in its particulars. Respond to this person or that person, this challenge, this deed. Quit the evasions. Stop giving yourself needless trouble. It is time to really live; to fully inhabit the situation you happen to be in right now.",
-    "author": "Epictetus"
-  },
-  {
-    "id": "quote13",
-    "text": "Don’t dwell on the past, don’t dream of the future, concentrate the mind on the present moment.",
-    "author": "Epictetus"
-  },
-  {
-    "id": "quote14",
-    "text": "We cannot control our external circumstances, but we can always control how we respond to them.",
-    "author": "Epictetus"
-  },
-  {
-    "id": "quote15",
-    "text": "He is a wise man who does not grieve for the things which he has not, but rejoices for those which he has.",
-    "author": "Epictetus"
-  },
-  {
-    "id": "quote16",
-    "text": "We need to regularly stop and take stock; to sit down and determine within ourselves which things are worth valuing and which things are not.",
-    "author": "Epictetus"
-  },
-  {
-    "id": "quote17",
-    "text": "Happiness and freedom begin with a clear understanding of one principle: Some things are within our control, and some things are not. It is only after you have faced up to this fundamental rule... that inner tranquility and outer effectiveness become possible.",
-    "author": "Epictetus"
-  },
-  {
-    "id": "quote18",
-    "text": "Is freedom anything else than the power of living as we choose? Nothing else… whoever is delivered from sorrows or fears or anxieties, he is at the same time also delivered from servitude.",
-    "author": "Epictetus"
-  },
-  {
-    "id": "quote19",
-    "text": "It’s not what happens to you, but how you react to it that matters.",
-    "author": "Epictetus"
-  },
-  {
-    "id": "quote20",
-    "text": "First say to yourself what you would be; and then do what you have to do.",
-    "author": "Epictetus"
+    "id": 2,
+    "name": "Epictetus",
+    "imageName": "epictetus",
+    "quotes": [
+      {
+        "id": "111",
+        "text": "There is only one way to happiness and that is to cease worrying about things which are beyond the power of our will.",
+        "meaning": "To be truly happy, stop worrying about things you cannot control and focus on what is within your power."
+      },
+      {
+        "id": "112",
+        "text": "Caretake this moment. Immerse yourself in its particulars. Respond to this person or that person, this challenge, this deed. Quit the evasions. Stop giving yourself needless trouble. It is time to really live; to fully inhabit the situation you happen to be in right now.",
+        "meaning": "Fully engage with the present—face challenges directly rather than avoiding them, and live life authentically in each situation."
+      },
+      {
+        "id": "113",
+        "text": "Don’t dwell on the past, don’t dream of the future, concentrate the mind on the present moment.",
+        "meaning": "Happiness lies in focusing on the present moment rather than ruminating on the past or anxious dreaming about the future."
+      },
+      {
+        "id": "114",
+        "text": "We cannot control our external circumstances, but we can always control how we respond to them.",
+        "meaning": "While you can’t dictate external events, you always have control over your own responses and attitudes."
+      },
+      {
+        "id": "115",
+        "text": "He is a wise man who does not grieve for the things which he has not, but rejoices for those which he has.",
+        "meaning": "Wisdom comes from rejoicing in what you have rather than lamenting what you lack."
+      },
+      {
+        "id": "116",
+        "text": "We need to regularly stop and take stock; to sit down and determine within ourselves which things are worth valuing and which things are not.",
+        "meaning": "Regularly pause to evaluate what truly matters, distinguishing between what you value and what you can let go."
+      },
+      {
+        "id": "117",
+        "text": "Happiness and freedom begin with a clear understanding of one principle: Some things are within our control, and some things are not.",
+        "meaning": "Inner peace and effective action stem from recognizing what is within your control and accepting what isn’t."
+      },
+      {
+        "id": "118",
+        "text": "Is freedom anything else than the power of living as we choose? Nothing else… whoever is delivered from sorrows or fears or anxieties, he is at the same time also delivered from servitude.",
+        "meaning": "Freedom means living according to your own choices; freeing yourself from fear and sorrow liberates you from all forms of servitude."
+      },
+      {
+        "id": "119",
+        "text": "It’s not what happens to you, but how you react to it that matters.",
+        "meaning": "Circumstances don’t define you—your reactions to them do, so cultivate a resilient mindset."
+      },
+      {
+        "id": "120",
+        "text": "First say to yourself what you would be; and then do what you have to do.",
+        "meaning": "Clarify your values and identity first, then align your actions with that vision to live purposefully."
+      }
+    ]
   }
 ]
-

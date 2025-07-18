@@ -7,32 +7,28 @@
 
 import SwiftUI
 
-// MARK: - Data Model
-// This struct now matches your new JSON structure.
-// It's Codable to allow easy decoding from JSON.
-
+// MARK: - Data Models
 struct Quote: Codable, Identifiable {
     let id: String
     let text: String
-    let author: String
+    let meaning: String
 }
 
-// MARK: - Main View
-// This is the primary view that constructs the screen from your screenshot.
+struct Philosopher: Codable, Identifiable {
+    let id: Int
+    let name: String
+    let quotes: [Quote]
+    let imageName: String
+}
 
+
+// MARK: - Main View
 struct PhilosopherQuotesView: View {
-    // We now load an array of Quote objects from the bundled JSON file.
-    let quotes: [Quote] = Bundle.main.decode("quotes.json")
+    let philosophers: [Philosopher] = Bundle.main.decode("quotes.json")
     
-    // State for the progress bar
-    @State private var collectedQuotes = 17
+    @State private var collectedQuotes = 20
     private let totalQuotes = 60
     
-    // Safely get the author's name from the first quote
-    private var authorName: String {
-        quotes.first?.author ?? "Philosopher"
-    }
-
     var body: some View {
         NavigationView {
             ScrollView {
@@ -44,53 +40,27 @@ struct PhilosopherQuotesView: View {
                             .foregroundColor(.secondary)
                         
                         Text("\(collectedQuotes)/\(totalQuotes)")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
+                            .font(.subheadline)
+                            .foregroundColor(.stoaGold)
 
                         // --- Progress Bar ---
-                        ProgressView(value: Double(collectedQuotes), total: Double(totalQuotes))
-                            .progressViewStyle(LinearProgressViewStyle(tint: .yellow))
-                            .padding(.horizontal)
-                    }
-                    .frame(maxWidth: .infinity)
-
-                    // --- Philosopher Info Section ---
-                    HStack {
-                        Image(systemName: "person.crop.circle.fill") // Placeholder for philosopher bust
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                            .foregroundColor(.gray)
-
-                        VStack(alignment: .leading) {
-                            Text(authorName)
-                                .font(.title2)
-                                .fontWeight(.bold)
-                            Text("\(quotes.count) / 10") // Example progress
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                        }
-
-                        Spacer()
-
-                        Button("More >") {
-                            // Action for the "More" button
-                            print("More button tapped for \(authorName)")
-                        }
-                        .foregroundColor(.accentColor)
-                    }
-                    .padding(.horizontal)
-
-                    // --- Quotes Carousel ---
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 16) {
-                            ForEach(quotes) { quote in
-                                QuoteCardView(quote: quote)
-                            }
-                        }
+                        ProgressBar(
+                            progress: Double(collectedQuotes) / Double(totalQuotes),
+                        )
                         .padding(.horizontal)
                     }
-                    // This makes the scroll view snap to the beginning of each card
-                    .scrollTargetBehavior(.viewAligned)
+                    .frame(maxWidth: .infinity)
+                    .padding(.bottom)
+
+                    // --- Loop through each philosopher ---
+                    ForEach(philosophers) { philosopher in
+                        PhilosopherSectionView(philosopher: philosopher)
+                    }
+                    
+                    Text("Stay updated for more quotes!")
+                        .font(.caption)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .padding(.top)
                 }
                 .padding(.vertical)
             }
@@ -102,46 +72,138 @@ struct PhilosopherQuotesView: View {
                 Image(systemName: "chevron.left")
                 Text("Back")
             })
-            .background(Color(.systemGroupedBackground).edgesIgnoringSafeArea(.all)) // A dark-mode friendly background
+            .background(Color(.stoaDarkBlue).edgesIgnoringSafeArea(.all))
+        }
+    }
+}
+
+struct ProgressBar: View {
+    /// 0.0 … 1.0
+    var progress: Double
+    /// Track’s full pill height
+    var trackHeight: CGFloat = 16
+    /// Fill’s inner bar height
+    var fillHeight: CGFloat = 8
+    var trackColor: Color = .white
+    var fillColor: Color = .stoaGold
+
+    var body: some View {
+        GeometryReader { proxy in
+            let width = proxy.size.width
+            ZStack {
+                Capsule()
+                    .fill(trackColor)
+                    .frame(height: trackHeight)
+
+                VStack {
+                    Spacer()
+                    HStack(spacing: 0) {
+                        Capsule()
+                            .fill(fillColor)
+                            .frame(
+                                width: width * min(max(progress, 0), 1),
+                                height: fillHeight
+                            )
+                            .padding(.leading)
+                        Spacer(minLength: 0)
+                    }
+                    Spacer()
+                }
+            }
+        }
+        .frame(height: trackHeight)
+    }
+}
+
+
+// MARK: - Philosopher Section View
+struct PhilosopherSectionView: View {
+    let philosopher: Philosopher
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            // --- Philosopher Info Section ---
+            HStack {
+                Image(philosopher.imageName)
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                    .foregroundColor(.gray)
+
+                VStack(alignment: .leading) {
+                    Text(philosopher.name)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    Text("\(philosopher.quotes.count) / 10")
+                        .font(.subheadline)
+                        .foregroundColor(.stoaGold)
+                }
+
+                Spacer()
+
+                Button(action: {
+                    print("More button tapped for \(philosopher.name)")
+                }) {
+                    Text("More")
+                    Image(systemName: "chevron.right")
+                }
+                .foregroundColor(.accentColor)
+            }
+            .padding(.horizontal)
+
+            // --- Quotes Carousel ---
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 16) {
+                    ForEach(philosopher.quotes) { quote in
+                        QuoteCardView(quote: quote)
+                    }
+                }
+                .padding(.horizontal)
+            }
+            .scrollTargetBehavior(.viewAligned)
         }
     }
 }
 
 
 // MARK: - Quote Card View
-// A reusable view for displaying a single quote in the carousel.
+import SwiftUI
 
 struct QuoteCardView: View {
     let quote: Quote
+    @State private var showingMeaning = false
 
     var body: some View {
         VStack {
             Spacer()
-            
-            Text("\"\(quote.text)\"")
+
+            Text(showingMeaning ? quote.meaning : "“\(quote.text)”")
                 .font(.body)
                 .multilineTextAlignment(.center)
+                .foregroundColor(showingMeaning ? .black : .white)
                 .padding()
 
             Spacer()
 
-            Text(quote.id) // Displaying the string ID
+            Text(showingMeaning ? "Meaning" : quote.id)
                 .font(.caption)
-                .foregroundColor(.secondary)
+                .foregroundColor(showingMeaning ? .black.opacity(0.6) : .secondary)
                 .padding(.bottom)
         }
-        .frame(width: 280, height: 320)
-        .background(Color.black)
-        .foregroundColor(.white)
+        .frame(width: 300, height: 360)
+        .background(showingMeaning ? Color.white : Color.black)
         .cornerRadius(20)
         .shadow(radius: 5)
+        .onTapGesture {
+            withAnimation(.easeInOut) {
+                showingMeaning.toggle()
+            }
+        }
     }
 }
 
 
-// MARK: - JSON Decoding Helper
-// An extension on Bundle to make loading and decoding JSON safer and cleaner.
 
+// MARK: - JSON Decoding Helper
 extension Bundle {
     func decode<T: Decodable>(_ file: String) -> T {
         guard let url = self.url(forResource: file, withExtension: nil) else {
