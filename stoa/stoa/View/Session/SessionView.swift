@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct SessionView: View {
 	static var breathingTrack = AudioTrack( //this shit will be inside CurrentSession later
@@ -65,11 +66,79 @@ struct SessionView: View {
 	
 	//when you code the things expect one or two tracks and adjust pls ziqa <3
 	//for 2 audio at the same time gemini say AVQueuePlayer instead of AVPlayer
-		
+    
+    @StateObject private var playerManager = AudioPlayerManager()
 	
 	var body: some View {
-		Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            Color(.stoaDarkBlue)
+            
+            VStack(spacing: 20) {
+                Spacer()
+                
+                Text(playerManager.currentText)
+                    .font(Font.custom("AveriaSerifLibre-Bold", size: 17, relativeTo: .body))
+                    .foregroundStyle(.white.opacity(0.9))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 30)
+                    .transition(.opacity.animation(.easeInOut(duration: 0.5)))
+                    .id(playerManager.currentText) // Helps SwiftUI recognize the change
+                
+                Spacer()
+                
+                sessionControls()
+            }
+        }
+        .ignoresSafeArea()
+        .onAppear {
+            // We'll play the mindfulness track. Change this to whichever you need.
+            if let track = currentSession.mindfulnessTrack {
+                playerManager.loadAndPlay(track: track)
+            }
+            // Note: To play two tracks simultaneously (e.g., voice + background music),
+            // you'd need two separate AVPlayer instances in your manager.
+            // AVQueuePlayer is for playing tracks one after another.
+        }
+        .onDisappear {
+            playerManager.cleanup()
+        }
 	}
+    
+    @ViewBuilder
+    func sessionControls() -> some View {
+        ZStack {
+            Rectangle()
+                .foregroundStyle(.black.opacity(0.5))
+                .frame(height: 350)
+                .frame(maxWidth: .infinity)
+                .clipShape(.rect(cornerRadius: 20))
+            
+            VStack(spacing: 45) {
+                HStack(spacing: 22) {
+                    Button("Haptics") {
+                        // Mute Haptics
+                    }
+                    .buttonStyle(HapticsButton())
+                    
+                    Button("Pause") {
+                        playerManager.togglePlayPause()
+                    }
+                    .buttonStyle(PauseButton())
+                    
+                    Button("Mute") {
+                        playerManager.isMuted.toggle()
+                    }
+                    .buttonStyle(MuteButton())
+                }
+                
+                Button("Finish Early") {
+                    // Finish Early
+                }
+                .buttonStyle(FinishEarly())
+            }
+        }
+        .frame(height: 350)
+    }
 }
 
 #Preview {
