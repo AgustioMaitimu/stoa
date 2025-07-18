@@ -12,14 +12,22 @@ struct SessionViewDraft: View {
 	
     var body: some View {
 		VStack {
-			if (currentSession.breathingTrack != nil) {
-				Text("Breathing ID : \(currentSession.breathingTrack!.trackID)")
+			VStack {
+				if (currentSession.breathingTrack != nil) {
+					Text("Breathing ID : \(String(currentSession.breathingTrack!.trackID))")
+				}
+				
+				if (currentSession.mindfulnessTrack != nil) {
+					Text("Mindfulness ID : \(String(currentSession.mindfulnessTrack!.trackID))")
+				}
 			}
 			
-			if (currentSession.mindfulnessTrack != nil) {
-				Text("Mindfulness ID : \(currentSession.mindfulnessTrack!.trackID)")
+			NavigationLink(destination: FinishedViewDraft(currentSession: currentSession)) {
+				Text("End Session")
 			}
 		}
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		.background(.stoaDarkBlue)
     }
 }
 

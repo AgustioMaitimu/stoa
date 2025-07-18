@@ -13,22 +13,36 @@ struct CustomizationViewDraft: View {
 	@Binding var extendedLengthEnabled: Bool
 	
 	var body: some View {
-		HStack {
-			Text("Breathing")
-			Toggle("Enabled", isOn: $breathingEnabled)
-				.labelsHidden()
+		VStack {
+			HStack {
+				Text("Breathing")
+				Toggle("Enabled", isOn: $breathingEnabled)
+					.labelsHidden()
+			}
+			
+			HStack {
+				Text("Mindfulness")
+				Toggle("Enabled", isOn: $mindfulnessEnabled)
+					.labelsHidden()
+			}
+			
+			HStack {
+				Text("Extended Length")
+				Toggle("Enabled", isOn: $extendedLengthEnabled)
+					.labelsHidden()
+			}
 		}
-		
-		HStack {
-			Text("Mindfulness")
-			Toggle("Enabled", isOn: $mindfulnessEnabled)
-				.labelsHidden()
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		.background(.stoaDarkerBlue)
+		.onChange(of: breathingEnabled) {
+			if !breathingEnabled && !mindfulnessEnabled {
+				mindfulnessEnabled = true
+			}
 		}
-		
-		HStack {
-			Text("Extended Length")
-			Toggle("Enabled", isOn: $extendedLengthEnabled)
-				.labelsHidden()
+		.onChange(of: mindfulnessEnabled) {
+			if !breathingEnabled && !mindfulnessEnabled {
+				breathingEnabled = true
+			}
 		}
 	}
 }

@@ -18,10 +18,9 @@ struct ContentViewDraft: View {
 	var body: some View {
 		NavigationStack {
 			VStack(spacing: 40) {
-				NavigationLink(value: "To Session") {
-									Text("Navigation Link")
-								}
-				
+				NavigationLink(value: "Start Session") {
+					Text("Start Session")
+				}
 				VStack {
 					
 					Text(breathingEnabled ? "Breathing On" : "Breathing Off")
@@ -32,9 +31,13 @@ struct ContentViewDraft: View {
 				Button("Customize") {
 					showCustomizationSheet.toggle()
 				}
+				
+				NavigationLink(destination: SavedSessionsViewDraft()) {
+					Text("Saved Sessions")
+				}
 			}
 			.navigationDestination(for: String.self) { value in
-				if value == "To Session" {
+				if value == "Start Session" {
 					SessionViewDraft(currentSession: createSession())
 				}
 			}
@@ -43,8 +46,11 @@ struct ContentViewDraft: View {
 					.presentationDetents([.medium])
 					.presentationDragIndicator(.visible)
 			}
-			
+			.frame(maxWidth: .infinity, maxHeight: .infinity)
+			.background(.stoaDarkBlue)
+			.foregroundStyle(.white)
 		}
+		.accentColor(.white)
 	}
 	
 	func createSession() -> CurrentSession {
@@ -52,8 +58,10 @@ struct ContentViewDraft: View {
 			breathingTrack: breathingEnabled ? (extendedLengthEnabled ? masterRecord.breathingExtended.randomElement() : masterRecord.breathingNormal.randomElement()) : nil,
 			
 			
-			mindfulnessTrack: mindfulnessEnabled ? (extendedLengthEnabled ? masterRecord.mindfulnessExtended.randomElement() : masterRecord.mindfulnessNormal.randomElement()) : nil
-			)
+			mindfulnessTrack: mindfulnessEnabled ? (extendedLengthEnabled ? masterRecord.mindfulnessExtended.randomElement() : masterRecord.mindfulnessNormal.randomElement()) : nil,
+			
+			isExtended: extendedLengthEnabled
+		)
 	}
 }
 

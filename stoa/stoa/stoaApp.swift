@@ -11,7 +11,8 @@ import SwiftUI
 struct stoaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+			ContentViewDraft()
         }
+		.modelContainer(for: SavedSession.self)
     }
 }
