@@ -50,10 +50,10 @@ class AudioTrack {
 }
 
 class Step {
-	var time : Float
+    var time : Double
 	var text : String
 	
-	init(time: Float, text: String) {
+    init(time: Double, text: String) {
 		self.time = time
 		self.text = text
 	}
