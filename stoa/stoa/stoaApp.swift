@@ -7,12 +7,13 @@
 
 import SwiftUI
 
+
 @main
 struct stoaApp: App {
-    var body: some Scene {
-        WindowGroup {
-			ContentViewDraft()
-        }
+	var body: some Scene {
+		WindowGroup {
+			HomeScreen()
+		}
 		.modelContainer(for: SavedSession.self)
-    }
+	}
 }

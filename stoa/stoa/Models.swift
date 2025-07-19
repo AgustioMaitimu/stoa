@@ -8,7 +8,8 @@
 import Foundation
 import SwiftData
 
-class CurrentSession {
+class CurrentSession: Hashable {
+	var id = UUID()
 	var breathingTrack: AudioTrack?
 	var mindfulnessTrack: AudioTrack?
 	var isExtended: Bool?
@@ -17,6 +18,14 @@ class CurrentSession {
 		self.breathingTrack = breathingTrack
 		self.mindfulnessTrack = mindfulnessTrack
 		self.isExtended = isExtended
+	}
+	
+	static func == (lhs: CurrentSession, rhs: CurrentSession) -> Bool {
+		lhs.id == rhs.id // or compare relevant properties
+	}
+	
+	func hash(into hasher: inout Hasher) {
+		hasher.combine(id) // or combine relevant properties
 	}
 }
 
@@ -54,10 +63,10 @@ class AudioTrack {
 
 @Model
 class Step {
-	var time : Float
+    var time : Double
 	var text : String
 	
-	init(time: Float, text: String) {
+    init(time: Double, text: String) {
 		self.time = time
 		self.text = text
 	}
