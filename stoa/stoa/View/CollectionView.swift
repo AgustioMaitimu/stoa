@@ -67,19 +67,17 @@ struct SavedSessionRow: View {
 	
 	var body: some View {
 		HStack {
-			Image(.icon1)
-				.resizable()
+			CardIconView(savedSession: savedSession)
 				.frame(width: 63, height: 63)
 			
 			VStack(alignment: .leading, spacing: 4) {
 				HStack(spacing: 5) {
-					Text("Sehr Gut")
+					Text("Session Details")
 						.font(.title2.bold())
 					Image(systemName: "chevron.right")
 						.font(.title3.bold())
 				}
 				
-				// Corrected date formatting
 				if let date = savedSession.date {
 					Text(date, style: .date)
 						.font(.caption)
@@ -122,4 +120,5 @@ extension Date {
 
 #Preview {
 	CollectionView()
+		.modelContainer(for: SavedSession.self, inMemory: true)
 }
