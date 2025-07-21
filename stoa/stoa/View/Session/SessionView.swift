@@ -73,7 +73,13 @@ struct SessionView: View {
         ZStack {
             Color(.stoaDarkBlue)
             
+            Circle()
+                .foregroundStyle(.stoaBlue)
+                .blur(radius: 60)
+                .opacity(playerManager.isPlaying ? 1 : 0)
+            
             VStack(spacing: 20) {
+                Spacer()
                 Spacer()
                 
                 Text(playerManager.currentText)
